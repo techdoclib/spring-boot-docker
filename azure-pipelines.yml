@@ -41,20 +41,20 @@ stages:
             tags: v2.$(Build.BuildId)
         - task: replacetokens@5
           inputs:
-            targetFiles: 'k8s-manifests/sample-k8s.yaml'
+            targetFiles: '**/*.yaml'
             encoding: 'auto'
             tokenPattern: 'default'
             writeBOM: true
-            actionOnMissing: 'warn'
+            actionOnMissing: 'fail'
             keepToken: false
-            actionOnNoFiles: 'continue'
+            actionOnNoFiles: 'fail'
             enableTransforms: false
             enableRecursion: false
             useLegacyPattern: false
             enableTelemetry: true
         - task: CopyFiles@2
           inputs:
-            Contents: '*yaml'
+            Contents: '*.yaml'
             TargetFolder: $(Build.ArtifactStagingDirectory)
         - task: PublishBuildArtifacts@1
           inputs:
