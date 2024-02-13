@@ -32,4 +32,10 @@ stages:
             mavenAuthenticateFeed: false
             effectivePomSkip: false
             sonarQubeRunAnalysis: false
- 
+        - task: Docker@2
+          inputs:
+            containerRegistry: 'docker-svc-con'
+            repository: 'abdulregistry/spring-boot-docker-example'
+            command: 'buildAndPush'
+            Dockerfile: '**/Dockerfile'
+            tags: v2.$(Build.BuildId)
