@@ -38,3 +38,4 @@ stages:
             repository: 'abdulregistry/spring-boot-docker-example'
             command: 'buildAndPush'
             Dockerfile: '**/Dockerfile'
+            tags: v2.$(Build.BuildId)
