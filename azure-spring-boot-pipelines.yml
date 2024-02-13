@@ -9,16 +9,10 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps: 
-- task: CopyFiles@2
-  displayName: Copy Files
-  inputs:
-    SourceFolder: $(system.defaultworkingdirectory)
-    Contents: '**'
-    TargetFolder: $(build.artifactstagingdirectory)
+steps:  
 - task: Maven@4
   inputs:
-    mavenPomFile: 'pom.xml'
+    mavenPomFile: '$(system.defaultWorkingDirectory)/spring-boot-docker/pom.xml'
     publishJUnitResults: false
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
