@@ -17,3 +17,13 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     goals: 'package'
+- task: Maven@4
+  inputs:
+    mavenPomFile: '''$(System.DefaultWorkingDirectory)/spring-boot-docker/pom.xml'
+    publishJUnitResults: false
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
+
