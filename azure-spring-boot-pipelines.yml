@@ -9,17 +9,10 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: Maven@1
-  inputs:
-    mavenPomFile: 'spring-boot-docker/pom.xml'
-    mavenOptions: '-Xmx3072m'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    goals: 'package'
+steps: 
 - task: Maven@4
   inputs:
-    mavenPomFile: '''$(System.DefaultWorkingDirectory)/spring-boot-docker/pom.xml'
+    mavenPomFile: '$(System.DefaultWorkingDirectory)/spring-boot-docker/pom.xml'
     publishJUnitResults: false
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
