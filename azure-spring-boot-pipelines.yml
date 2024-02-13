@@ -12,7 +12,7 @@ pool:
 steps:  
 - task: Maven@4
   inputs:
-    mavenPomFile: '$(system.defaultWorkingDirectory)/pom.xml'
+    mavenPomFile: '$(system.defaultWorkingDirectory)/techdoclib/spring-boot-docker/pom.xml'
     publishJUnitResults: false
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
