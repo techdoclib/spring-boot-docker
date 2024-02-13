@@ -34,5 +34,7 @@ stages:
             sonarQubeRunAnalysis: false
         - task: Docker@2
           inputs:
-            command: 'build'
+            containerRegistry: 'docker-svc-con'
+            repository: 'abdulregistry/spring-boot-docker-example'
+            command: 'buildAndPush'
             Dockerfile: '**/Dockerfile'
