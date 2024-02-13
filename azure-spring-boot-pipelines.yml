@@ -10,9 +10,15 @@ pool:
   vmImage: ubuntu-latest
 
 steps: 
+- task: CopyFiles@2
+  displayName: Copy Files
+  inputs:
+    SourceFolder: $(system.defaultworkingdirectory)
+    Contents: '**'
+    TargetFolder: $(build.artifactstagingdirectory)   
 - task: Maven@4
   inputs:
-    mavenPomFile: '$(System.DefaultWorkingDirectory)/spring-boot-docker/pom.xml'
+    mavenPomFile: 'pom.xml'
     publishJUnitResults: false
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
