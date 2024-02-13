@@ -9,7 +9,22 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-- task: CmdLine@2
-  inputs:
-    script: 'ls -al'
+stages:
+  - stage: maven build job
+    jobs:
+      - job: mavenbuildjob
+        continueOnError: false
+        steps:
+        - task: CmdLine@2
+          inputs:
+            script: 'ls -al'
+        - task: Maven@4
+          inputs:
+            mavenPomFile: 'pom.xml'
+            publishJUnitResults: false
+            javaHomeOption: 'JDKVersion'
+            mavenVersionOption: 'Default'
+            mavenAuthenticateFeed: false
+            effectivePomSkip: false
+            sonarQubeRunAnalysis: false
  
