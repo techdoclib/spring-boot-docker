@@ -18,7 +18,7 @@ steps:
     TargetFolder: $(build.artifactstagingdirectory)   
 - task: Maven@4
   inputs:
-    mavenPomFile: 'pom.xml'
+    mavenPomFile: '$(build.artifactstagingdirectory)/spring-boot-docker/pom.xml'
     publishJUnitResults: false
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
