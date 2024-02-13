@@ -12,7 +12,7 @@ pool:
 steps:
 - task: Maven@1
   inputs:
-    mavenPomFile: '$(System.DefaultWorkingDirectory)/pom.xml'
+    mavenPomFile: 'spring-boot-docker/pom.xml'
     mavenOptions: '-Xmx3072m'
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
