@@ -39,3 +39,16 @@ stages:
             command: 'buildAndPush'
             Dockerfile: '**/Dockerfile'
             tags: v2.$(Build.BuildId)
+        - task: replacetokens@5
+          inputs:
+            targetFiles: 'k8s-manifests/sample-k8s.yaml'
+            encoding: 'auto'
+            tokenPattern: 'default'
+            writeBOM: true
+            actionOnMissing: 'warn'
+            keepToken: false
+            actionOnNoFiles: 'continue'
+            enableTransforms: false
+            enableRecursion: false
+            useLegacyPattern: false
+            enableTelemetry: true
