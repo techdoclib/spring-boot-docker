@@ -9,7 +9,10 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:  
+steps: 
+- task: CmdLine@2
+  inputs:
+    script: 'ls -al'
 - task: Maven@4
   inputs:
     mavenPomFile: '$(system.defaultWorkingDirectory)/techdoclib/spring-boot-docker/pom.xml'
