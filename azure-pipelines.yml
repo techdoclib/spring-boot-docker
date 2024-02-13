@@ -39,3 +39,44 @@ stages:
             command: 'buildAndPush'
             Dockerfile: '**/Dockerfile'
             tags: v2.$(Build.BuildId)
+        - task: replacetokens@5
+          inputs:
+            targetFiles: 'sample-k8s.yaml'
+            encoding: 'auto'
+            tokenPattern: 'default'
+            writeBOM: false
+            actionOnMissing: 'fail'
+            keepToken: false
+            actionOnNoFiles: 'fail'
+            enableTransforms: true
+            transformPrefix: '#{'
+            transformSuffix: '}#'
+            variableFiles: '.yaml'
+            enableRecursion: false
+            useLegacyPattern: false
+            enableTelemetry: false
+        - task: CmdLine@2
+          inputs:
+            script: 'cat sample-k8s.yaml'
+        - task: replacetokens@5
+          inputs:
+            targetFiles: '**/*.yaml'
+            encoding: 'auto'
+            tokenPattern: 'default'
+            writeBOM: true
+            actionOnMissing: 'fail'
+            keepToken: false
+            actionOnNoFiles: 'fail'
+            enableTransforms: false
+            enableRecursion: false
+            useLegacyPattern: false
+            enableTelemetry: true
+        - task: CopyFiles@2
+          inputs:
+            Contents: '*.yaml'
+            TargetFolder: $(Build.ArtifactStagingDirectory)
+        - task: PublishBuildArtifacts@1
+          inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+            ArtifactName: 'drop'
+            publishLocation: 'Container'
