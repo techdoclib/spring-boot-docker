@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: sample-k8s-app
+  name: sample-k8s-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-k8s-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: sample-k8s-app
+    spec:
+      containers:
+      - image: spring-boot-docker-example.v2.#{Build.BuildId}
+        name: spring-boot-docker-example
+        resources: {}
+status: {}
