@@ -18,7 +18,7 @@ spec:
         app: sample-k8s-app
     spec:
       containers:
-      - image: spring-boot-docker-example.v2.#{Build.BuildId}
+      - image: spring-boot-docker-example:v2.#{Build.BuildId}#
         name: spring-boot-docker-example
         resources: {}
 status: {}
