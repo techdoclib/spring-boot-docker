@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-  - stage: maven build job
+  - stage: mavenbuildjob
     jobs:
       - job: mavenbuildjob
         continueOnError: false
